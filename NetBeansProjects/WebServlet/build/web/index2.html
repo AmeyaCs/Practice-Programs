@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!--
+Problem Statement: Design Servlet program which will allow user to register for the job site and 
+save registration data into database.
+-->
+
+<html>
+    <head>
+        <title>Index Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .p1{
+                color:cadetblue;
+                font-style: italic;
+                font-weight: bold;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body bgcolor="#d6c29e">
+                
+        <h1 class="p1"> Global Pharmaceuticals®</h1>
+        <br>
+        <fieldset>
+            <legend>Register Here</legend>   <br>        
+        <form action="RegisterServlet" method="post">           
+            
+            Enter your Full Name    : &nbsp;&nbsp;&nbsp;<input type="text" name="uname"><br><br>
+            Enter your Date of Birth : <input type="date" name="dob"><br><br>
+            Enter your Address      : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="adr"><br><br>
+            Enter your Mobile No.   : &nbsp;&nbsp;&nbsp;<input type="number" name="mob"><br><br>
+            Enter your Qualification : <input type="text" name="qlf"><br><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" name="b1" value="   Save    "> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="reset" name="b2" value="   Reset    "> 
+              
+        </form>
+        </fieldset>   
+        
+    </body>
+</html>

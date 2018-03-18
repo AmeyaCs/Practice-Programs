@@ -1,0 +1,50 @@
+create 3 tables
+
+1
+Name: salest
+cols:
+s_person	item_sold	price	s_dt	item_category	num_item_sold
+
+
+2
+Name: sales_details
+Cols:
+sales_person	item_name	item_price	sales_date	branch		num_items_sold
+
+3
+Name: sales_records
+Cols:
+supplier	item_name	price	sales_dt	branch		item_category		no_items_sold
+
+
+
+Insert 5 values in 2 tables
+
+
+
+ insert into sales_t values ('ravi','500','10-mar-2016','hw',10);
+ insert into sales_t values ('sahil','300','11-mar-2016','sw',20);
+ insert into sales_t values ('hardik','600','12-mar-2016','hw',10);
+ insert into sales_t values ('ameya','900','13-mar-2016','sw',20);
+
+
+insert into sales_details values('priva','computer','1200','15-mar-2016','borivali','40');
+insert into sales_details values('hitesh','laptop','1500','16-mar-2016','nalasopara','10');
+insert into sales_details values('apoorv','AV','1400','17-mar-2016','bandra','25');
+insert into sales_details values('hemant','mouse','1100','18-mar-2016','andheri','15');
+insert into sales_details values('sameer','OS','2000','19-mar-2016','vasai','20');
+
+extraction
+
+insert into sales_records(select s_person, item_category, price, s_dt, null, item_category, num_item_sold from sales_t);
+insert into sales_records(select sales_person, item_name, item_price, sales_date, branch, null, num_items_sold from sales_details);
+
+transformation
+
+insert into sales_details values('priya','computer','1200',to_date('2016-jan-03','yyyy-mm-dd'),'borivali',40);
+update sales_records set branch='unknown' where branch is null;
+update sales_records set item_category='unknown' where item_category is null;
+
+loading
+
+create view catalog1 as (select sum(price*no_items_sold) as yearly_sale, to_char(sales_dt, 'yyyy') as year from sales_records group by to_char(sales_dt,'yyyy'));

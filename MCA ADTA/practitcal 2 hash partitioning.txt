@@ -1,0 +1,19 @@
+CREATE TABLE employe1(
+eid  varchar2(10) primary key,
+fname VARCHAR2(30),
+lname VARCHAR2(30),
+hired DATE DEFAULT '01-jan-1990',
+job_code INT,
+store_id INT
+)
+PARTITION BY HASH(store_id)
+PARTITIONS 4 store in (users,users,users,users);
+
+
+desc employe1;
+
+insert into employe1 values('e104','Snehal','Sawant','10-JUL-14',183112,5);
+
+select * from employe1;
+
+select partition_name from user_tab_partitions where TABLE_NAME='EMPLOYE1';

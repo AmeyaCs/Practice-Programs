@@ -1,0 +1,32 @@
+#include<conio.h>
+#include<iostream.h>
+#include<fstream.h>
+ 
+int L=255;
+typedef unsigned char byte;
+byte h[54];
+byte pixel;
+ofstream out;
+ifstream in;
+ 
+void main()
+{
+            clrscr();
+	    char ipfile[]="C:\\TURBOC3\\bin\\sample3.bmp";
+	    char opfile[]="C:\\TURBOC3\\bin\\sample4.bmp";
+	    in.open(ipfile,ios::in|ios::binary);
+	    out.open(opfile,ios::out|ios::binary);
+	    in.read((byte *)(&h), sizeof(h));
+	    out.write((byte *)(&h), sizeof(h));
+	    while(!in.eof())
+	    {
+			in.read((byte *)(&pixel), sizeof(pixel));
+			pixel=L-pixel;
+			out.write((byte *)(&pixel), sizeof(pixel));
+	    }
+
+	    cout<<"\n Negative is stored in the file"<<opfile;
+	    in.close();
+	    out.close();
+	    getch();
+}

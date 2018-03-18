@@ -1,0 +1,29 @@
+Select table_name,partition_name, tablespace_name, high_value from user_tab_partitions WHERE TABLE_NAME='SALES_HASH';
+
+
+
+Select * from SALES_HASH partition(p1);
+
+Select * from SALES_HASH partition(p2);
+
+Select * from SALES_HASH partition(p3);
+
+Select * from SALES_HASH partition(p4);
+
+
+Select count(*) from SALES_HASH partition(p1);
+
+Select count(*) from SALES_HASH partition(p2);
+
+Select count(*) from SALES_HASH partition(p3);
+
+Select count(*) from SALES_HASH partition(p4);
+
+
+Select * from SALES_HASH where S_TOTALPRICE=(Select max(S_TOTALPRICE) from SALES_HASH partition(p1));
+
+Select * from SALES_HASH where S_TOTALPRICE=(Select max(S_TOTALPRICE) from SALES_HASH partition(p2));
+
+Select *from SALES_HASH where S_TOTALPRICE=(Select max(S_TOTALPRICE) from SALES_HASH partition(p3));
+
+Select *from SALES_HASH where S_TOTALPRICE=(Select max(S_TOTALPRICE) from SALES_HASH partition(p4));

@@ -1,0 +1,30 @@
+CREATE TABLE sales_range1
+(salesman_id NUMBER(5) primary key,
+salesman_name VARCHAR2(30),
+sales_amount NUMBER(10),
+sales_date DATE)
+PARTITION BY RANGE(sales_date)
+(PARTITION sales_jan2000 VALUES LESS THAN('01/jan/2000') tablespace users,
+PARTITION sales_jan2005 VALUES LESS THAN('01/jan/2005') tablespace users,
+PARTITION sales_jan2010 VALUES LESS THAN('01/jan/2010') tablespace users,
+PARTITION sales_jan2015 VALUES LESS THAN(MAXVALUE) tablespace users);
+
+
+insert into sales_range1 values(1,'Jay',2000,'24/aug/2000');
+
+insert into sales_range1 values(2,'Virrruuu',6000,'20/jun/2004');
+
+insert into sales_range1 values(3,'Divya',1500,'2/jan/2007');
+
+insert into sales_range1 values(4,'Snehal',3567,'31/dec/1994');
+
+insert into sales_range1 values(5,'Sneha',4000,'10/nov/2002');
+
+select * from sales_range1 partition(sales_jan2000);
+
+select partition_name from user_tab_partitions where table_name='sales_range1';
+
+select * from sales_range1;
+
+
+alter table sales_range1 split partition sales_jan2005 at('01/jan/2000') into (partition sales_jan2000,partition sales_jan2005);

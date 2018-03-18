@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!--
+Problem Statement: Create a servlet to a use Request dispatcher and use the forward method to forward the request to another servlet which gives back the result to browser.
+Servlet 1: is login page with user name and password Servlet 2: display user name and send the result to browser.
+-->
+
+<html>
+    <head>
+        <title>Index Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body bgcolor="#d6c29e">
+        <br>
+        <fieldset>
+            <legend>Login Information</legend>           
+        <form action="LoginServlet" method="post">           
+            <br>
+            Enter Username : <input type="text" name="uname"><br><br>
+             Enter Password : <input type="password" name="pwd"><br><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" name="b1" value="   Login    ">            
+        </form>
+        </fieldset>   
+        
+    </body>
+</html>
